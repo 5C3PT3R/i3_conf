@@ -30,8 +30,8 @@ bindsym $super+w exec brave
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
 bindsym XF86AudioMute exec amixer set Master toggle
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym $super+p exec brightnessctl set 5%+
+bindsym $super+o exec brightnessctl set 5%-
 
 # kill focused window
 bindsym $super+q kill
