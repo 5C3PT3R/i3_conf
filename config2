@@ -1,0 +1,69 @@
+general {
+    output_format = "i3bar"
+    colors = false
+    markup = pango
+    interval = 1
+}
+
+# Order of displayed information with custom icons and formatting
+order += "load"
+order += "cpu_temperature 0"
+# order += "memory"
+order += "disk /"
+order += "wireless wlo1"
+# order += "ethernet enp3s0"
+order += "volume master"
+order += "battery 0"
+order += "tztime local"
+
+# CPU Load with icon and background color
+load {
+    format = "<span>  Load~ </span><span color= 'white' background='#1b7573'>  %5min Load  </span>"
+}
+
+# CPU Temperature with thermometer icon
+cpu_temperature 0 {
+    format = "<span background='#239693'>  Temp~  </span><span color= 'white' background='#1b7573'>  %degrees °C  </span>"
+    path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+# Disk usage for root partition with a disk icon
+disk "/" {
+    format = "<span>  Root~  </span><span color= 'white' background='#1b7573'>  %avail GB available  </span>"
+    low_threshold = 10  # Low space threshold
+}
+
+# Wireless network with signal icon
+wireless wlo1 {
+    format_up = "<span>  Wifi~  </span><span color= 'white' background='#1b7573'>  %essid  </span>"
+    format_down = "<span>  404  </span><span color= 'white' background='#1b7573'>  Disconnected  </span>"
+}
+
+# Volume control with speaker icon
+volume master {
+    format = "<span>  Vol~  </span><span color= 'white' background='#1b7573'>  %volume  </span>"
+    format_muted = "<span>  Vol~  </span><span color= 'white' background='#1b7573'>  Muted  </span>"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+# Battery status with custom symbols for charging, discharging, etc.
+battery 0 {
+    last_full_capacity = true
+    format = "<span>  %status  </span><span color='white' background='#1b7573'>  %percentage  </span>"
+    format_down = "No Battery"
+    status_chr  = "Charging~"  # Charging
+    status_bat  = "Battery~ "  # Discharging
+    status_unk  = "KNULL~   "  # Unknown
+    status_full = "Idle~    "  # Fully charged
+    path = "/sys/class/power_supply/BAT%d/uevent"
+    low_threshold = 10
+    integer_battery_capacity = true
+}
+
+# Time and Date with clock icon
+tztime local {
+    format = "<span>  It's~  </span><span background='#1b7573' color='white'>  %d %b @ %H:%M  </span>"
+}
+
