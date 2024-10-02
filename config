@@ -27,11 +27,19 @@ bindsym $super+w exec brave
 # bindsym $super+e exec thunar
 
 # change volume and brightness
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 bindsym $super+p exec brightnessctl set 5%+
 bindsym $super+o exec brightnessctl set 5%-
+
+# play pause media
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# only for spotify 
+bindsym XF86AudioStop exec playerctl play-pause --player=spotify
 
 # kill focused window
 bindsym $super+q kill
