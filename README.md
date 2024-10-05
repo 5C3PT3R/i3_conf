@@ -11,7 +11,15 @@ now the picom is not installing in i3 originally so first download it then put c
 
 to control brightness without using sudo,
 
-**sudo usermod -aG video $USER**
+**sudo usermod -aG video $USER**in my system the keyboard backlit is named as asus::kbd_backlight, to check yours type,
+
+*brightnessctl --l* this will list all the devices
+
+then use 
+
+*sudo brightnessctl --d device_name set desired_brightness* to set the brightness
+
+now as this command uses sudo to edit, edit its write permission in /sys/led/device_name
 
 
 to set the wallpaper, download the wallpaper in ./Downloads then run,
